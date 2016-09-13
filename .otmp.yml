@@ -1,0 +1,13 @@
+name: Text Chat Sample
+author: TokBox, Inc.
+website: https://tokbox.com
+tags:
+ - feature
+ - sample
+ - tutorial
+description: The OpenTok Text Chat Accelerator Pack provides functionality you can add to your OpenTok applications that enables users to exchange text messages between mobile or browser-based devices.
+image: https://static.opentok.com/img/styleguide/tokbox-logo-vertical.png
+platforms:
+ - js
+ - iOS
+ - Android
