@@ -323,8 +323,13 @@
 
     _composer.onkeyup = function updateCharCounter() {
       $('#characterCount').text(_composer.value.length);
+      if(_composer.value.length != 0) {
+        $('.ots-icon-check').addClass("active");
+      }else{
+        $('.ots-icon-check').removeClass("active");
+      }
     };
-
+    
     _composer.onkeydown = function controlComposerInput(event) {
       var isEnter = (event.which === 13 || event.keyCode === 13);
       if (!event.shiftKey && isEnter) {
