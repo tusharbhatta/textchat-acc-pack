@@ -44,6 +44,7 @@
     self.textChatInputView.sendButton.backgroundColor = [UIColor colorWithRed:2/255.0f green:132/255.0f blue:196/255.0f alpha:1.0f];
     
     __weak CustomTextChatTableViewController *weakSelf = self;
+<<<<<<< HEAD
     [self.textChat connectWithHandler:^(OTTextChatViewEventSignal signal, OTTextMessage *textMessage, NSError *error) {
         
         if (!error) {
@@ -67,6 +68,33 @@
             }
         }
     }];
+=======
+    [self.textChat connectWithHandler:^(OTTextChatConnectionEventSignal signal, OTTextChatConnection *connection, NSError *error) {
+        
+        if (!error) {
+            if (signal == OTTextChatConnectionEventSignalDidConnect) {
+                [senderIdentifiers addObject:self.textChat.selfConnection.connectionId];
+            }
+            
+            if (signal == OTTextChatConnectionEventSignalDidDisconnect) {
+                [self.textChat connect];
+            }
+        }
+    }];
+    
+    self.textChat.messageHandler = ^(OTTextChatMessageEventSignal signal, OTTextMessage *textMessage, NSError *error) {
+        if (signal == OTTextChatMessageEventSignalDidSendMessage || signal == OTTextChatMessageEventSignalDidReceiveMessage) {
+            
+            [weakSelf addTextMessage:textMessage];
+            [weakSelf.tableView reloadData];
+            [weakSelf scrollTextChatTableViewToBottom];
+            
+            if (signal == OTTextChatMessageEventSignalDidSendMessage) {
+                weakSelf.textChatInputView.textField.text = nil;
+            }
+        }
+    };
+>>>>>>> master
     
     [self configureBlurBackground];
     [self configureCustomCells];
