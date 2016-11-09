@@ -90,32 +90,34 @@ The following `options` fields are used in the `TextChatAccPack` constructor:<br
 
 | Feature        | Field  |
 | ------------- | ------------- |
+| Set the session. | `session`  |
 | Set the chat container. | `textChatContainer`  |
 | Sets the position of the element that displays the information for the character count within the UI. | `controlsContainer`  |
 | Set the maximum chat text length. | `limitCharacterMessage`  |
 | Set the sender alias and the sender ID of the outgoing messages. | `sender`  |
-| Set the session. | `session`  |
+| Set the text chat container to automatically be displayed. | `alwaysOpen`  |
 
 
-If you install the text chat component with [npm](https://www.npmjs.com/package/opentok-text-chat), you can instantiate the `TextChatAccPack` instance with this approach:
+If you're using a bundler like webpack or Browserify, you can install the the text chat component with [npm](https://www.npmjs.com/package/opentok-text-chat), and import into your application:
 
   ```javascript
-  const textChat = require('opentok-text-chat');
-  const textChatAccPack = new textChat(options);
+  const TextChatAccPack = require('opentok-text-chat');
+  const textChat = new TextChatAccPack(options);
   ```
 
 
-Otherwise, this initialization code demonstrates how the `TextChatAccPack` object is initialized:
+Otherwise, the package will need to be in `global` scope to be initialized:
 
   ```javascript
       var _options = {
         textChat: {
           sender: {
-            alias: 'user1',
+            alias: 'David',
           },
           limitCharacterMessage: 160,
           controlsContainer: '#feedControls',
-          textChatContainer: '#chatContainer'
+          textChatContainer: '#chatContainer',
+          alwaysOpen: true
         }
       };
 
@@ -125,7 +127,8 @@ Otherwise, this initialization code demonstrates how the `TextChatAccPack` objec
        sender: _options.textChat.sender,
        limitCharacterMessage: _options.textChat.limitCharacterMessage,
        controlsContainer: _options.textChat.controlsContainer,
-       textChatContainer: _options.textChat.textChatContainer
+       textChatContainer: _options.textChat.textChatContainer,
+       alwaysOpen: _options.textChat.alwaysOpen
      };
 
      _components.textChat = new TextChatAccPack(textChatOptions);
