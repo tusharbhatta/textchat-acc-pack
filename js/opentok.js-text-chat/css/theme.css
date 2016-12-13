@@ -533,12 +533,15 @@
   background-clip: padding-box
 }
 
+
 .ots-widget-wrapper .ots-widget-extras .ots-messages-holder {
   height: 365px;
   overflow: hidden;
   overflow-y: scroll
 }
-
+.ots-widget-wrapper .ots-widget-extras .ots-messages-holder.has-alert {
+  padding-top: 30px;
+}
 .ots-widget-wrapper .ots-widget-extras .ots-messages-holder .ots-messages-alert {
   position: relative;
   padding: 30px;
