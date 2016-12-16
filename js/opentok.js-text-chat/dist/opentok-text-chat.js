@@ -211,11 +211,15 @@
   var _showWaitingMessage = function () {
     var el = document.getElementById('messagesWaiting');
     el && el.classList.remove('ots-hidden');
+    var parent = document.getElementById('messagesHolder');
+    parent && parent.classList.add('has-alert');
   };
 
   var _hideWaitingMessage = function () {
     var el = document.getElementById('messagesWaiting');
     el && el.classList.add('ots-hidden');
+    var parent = document.getElementById('messagesHolder');
+    parent && parent.classList.add('has-alert');
   };
 
   var _sendMessage = function (recipient, message) {
